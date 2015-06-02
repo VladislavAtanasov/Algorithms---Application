@@ -5,10 +5,11 @@ def encrypt(string):
     lengalpha = int(reversestring[:reversestring.index("~")])
     lengkey = reversestring[:reversestring.index("~"):-1]
     lengthkey = int(lengkey[lengkey.index("~")-1::-1])
+    lengthkey1 = lengkey[lengkey.index("~")-1::-1]
     key = fhalf[fhalf.index("~") - lengthkey:fhalf.index("~")]
     alphabet = sehalf[sehalf.index("~") + 1: sehalf.index("~") + lengalpha + 1]
     encryptalphabet = reversestring[reversestring.index(alphabet[len(alphabet)-1])+1:]
-    encryptalphabet = encryptalphabet[:encryptalphabet.index(encryptalphabet[len(encryptalphabet) - 1]) - 1 - len(key)]
+    encryptalphabet = encryptalphabet[:encryptalphabet.index(encryptalphabet[len(encryptalphabet) - 1]) - len(lengthkey1) - len(key)]
     indexes = []
     for x in encryptalphabet:
         indexes.append(alphabet.index(x))
