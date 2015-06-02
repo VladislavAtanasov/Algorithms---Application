@@ -7,7 +7,8 @@ def encrypt(string):
     lengthkey = int(lengkey[lengkey.index("~")-1::-1])
     key = fhalf[fhalf.index("~") - lengthkey:fhalf.index("~")]
     alphabet = sehalf[sehalf.index("~") + 1: sehalf.index("~") + lengalpha + 1]
-    encryptalphabet = reversestring[reversestring.index(alphabet[len(alphabet)-1])+1:reversestring.index(alphabet[len(alphabet)-1])+len(alphabet) + 2]
+    encryptalphabet = reversestring[reversestring.index(alphabet[len(alphabet)-1])+1:]
+    encryptalphabet = encryptalphabet[:encryptalphabet.index(encryptalphabet[len(encryptalphabet) - 1]) - 1 - len(key)]
     indexes = []
     for x in encryptalphabet:
         indexes.append(alphabet.index(x))
@@ -34,6 +35,8 @@ def encrypt(string):
 
 def main():
     print(encrypt("vrItommseIal vihack~416~Ilocveakgrithms he"))
-
+    print(encrypt("fl k.ccfsIolskv.~312~ .Ifrckslovelvo"))
+    print(encrypt("o?uin uw?stutnfwat?~413~orwa? thfuisnnrsiu"))
+    print(encrypt("rc hscesi tcrest~410~thisaecr .rcese"))
 if __name__ == '__main__':
     main()
