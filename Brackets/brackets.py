@@ -10,6 +10,10 @@ def isEmpty(stack):
     return len(stack) == 0
 
 
+def isDigit(sym):
+    return sym in '0123456789'
+
+
 def sumUntilOpening(stack):
         suma = 0
         base = 1
@@ -33,7 +37,7 @@ def sumUntilOpening(stack):
 def evaluate(expr):
     stack = []
     for i in range(len(expr)):
-        if isOpening(expr[i]) or isinstance(expr[i], int):
+        if isOpening(expr[i]) or isDigit(expr[i]):
             stack.append(expr[i])
         elif isClosing(expr[i]):
             sumUntilOpening(stack)
@@ -81,6 +85,10 @@ def bracket_validation(string):
 def main():
     print(bracket_validation("[123(145)38(37)812]"))
     print(bracket_validation("{125[2][(1)][3]125}"))
+    print(bracket_validation("[125()125()125()125]"))
+    print(bracket_validation("{125()125}"))
+    print(bracket_validation("{125[12]{125}[12]125}"))
+    print(bracket_validation("{125[12(123]125}"))
 
 if __name__ == '__main__':
     main()
